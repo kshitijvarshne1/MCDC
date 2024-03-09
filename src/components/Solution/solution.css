@@ -1,0 +1,10 @@
+.lastDiv {
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    margin-top: 15px;
+}
+
+.resultDiv {
+    margin-top: 15px;
+}
