@@ -48,7 +48,29 @@ function Solution(props) {
     }
 
     const getPredicate = () => {
-
+        let result = generateTruthTable(inputText);
+        const columns = [
+            {
+                title: "No.",
+                dataIndex: "No.",
+                key: "No.",
+            },
+            ...Object.keys(result[0]).map(key => ({
+                title: key,
+                dataIndex: key,
+                key: key,
+            })).filter(col => col.key !== "No.")
+        ];
+        result = result
+            .filter(e => e.P === "T")
+            .map((e, index) => ({ ...e, "No.": index + 1 }));
+        return (
+            <Table
+                dataSource={result}
+                columns={columns}
+                pagination={false}
+            />
+        );
 
 
         return <div>p</div>
