@@ -109,8 +109,91 @@ function Solution(props) {
       />
     );
   };
+
+  const checkKeys = (r1, r2, allKeys, key) => {
+    let filterKeys = allKeys.filter(
+      (k) => k !== "No." && k !== "P" && k !== key
+    );
+    if (r1["P"] !== r2["P"] && r1[key] !== r2[key]) {
+      for (let k of filterKeys) {
+        if (r1[k] !== r2[k]) {
+          return false;
+        }
+      }
+    } else {
+      return false;
+    }
+    return true;
+  };
+
+  const getConsolidatedData = (data) => {
+    const allKeys = Object.keys(data[0]);
+    let keysToUse = allKeys
+      .filter((key) => key !== "No." && key !== "P")
+      .map((key) => ({ key, val: [], T: [], F: [] }));
+    for (let i = 0; i < keysToUse.length; i++) {
+      let key = keysToUse[i].key;
+      for (let row of data) {
+        if (row[key] === "T") {
+          keysToUse[i].T.push(row);
+        }
+        if (row[key] === "F") {
+          keysToUse[i].F.push(row);
+        }
+      }
+      let count = 0;
+      for (let r1 of keysToUse[i].T) {
+        for (let r2 of keysToUse[i].F) {
+          if (checkKeys(r1, r2, allKeys, key)) {
+            count++;
+            break;
+          }
+        }
+      }
+      keysToUse[i].val = count;
+    }
+    return keysToUse;
+  };
+
   const getActive = () => {
-    return <div>a</div>;
+    let result = generateTruthTable(inputText);
+    let resultConsolatedData = getConsolidatedData([...result]);
+    const columns = [
+      {
+        title: "No.",
+        dataIndex: "No.",
+        key: "No.",
+      },
+      ...Object.keys(result[0])
+        .map((key) => ({
+          title: key,
+          dataIndex: key,
+          key: key,
+        }))
+        .filter((col) => col.key !== "No."),
+    ];
+
+    return (
+      <div>
+        {resultConsolatedData.map((obj, index) =>
+          index === resultConsolatedData.length - 1 ? (
+            <span key={index}>
+              {obj.key} : {obj.val}
+            </span>
+          ) : (
+            <span key={index}>
+              {obj.key} : {obj.val},{" "}
+            </span>
+          )
+        )}
+        <Table
+          rowKey={(record) => record["No."]}
+          dataSource={result}
+          columns={columns}
+          pagination={false}
+        />
+      </div>
+    );
   };
 
   const getFormattedSolution = () => {
