@@ -1,21 +1,24 @@
 .navDiv {
-    font-family: "Euclid Circular A", "Poppins";
-    background: #030308;
-    color: #f9f9f9;
-    margin: 0;
-    padding: 25px;
-    padding-left: 65px;
-    padding-right: 65px;
+  font-family: "Euclid Circular A", "Poppins";
+  background: #401a67;
+  color: #f9f9f9;
+  margin: 0;
+  padding: 25px;
+  padding-left: 65px;
+  padding-right: 65px;
 }
 
 .coverageCalculator {
-    font-size: 20px;
-    font-weight: 600;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .home {
-    font-size: 20px;
-    font-weight: 600;
-    display: flex;
-    justify-content: end;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: end;
+}
+.homeDiv {
+  color: white;
 }

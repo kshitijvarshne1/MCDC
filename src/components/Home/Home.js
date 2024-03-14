@@ -73,7 +73,7 @@ function Home() {
               setInputText(e.target.value);
               setSolution(false);
             }}
-            placeholder="Enter character or symbols ex: A | B"
+            placeholder="Enter characters(A-Z) or symbols ex: A | B"
           />
           <div className="infoDiv">
             <InfoCircleOutlined />

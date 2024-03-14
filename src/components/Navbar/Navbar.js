@@ -16,7 +16,9 @@ function Navbar() {
         </Col>
         <Col xs={12} xm={12} md={12} lg={12}>
           <div className="home" onClick={handleHomeClick}>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <div className="homeDiv">Home</div>
+            </Link>
           </div>
         </Col>
       </Row>
