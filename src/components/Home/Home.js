@@ -54,13 +54,16 @@ function Home() {
       notification("error", "Please select the coverage criteria");
       return;
     }
+
     console.log("inputText", inputText);
     setSolution(criteria);
   };
+
   const onChange = (e) => {
     setCriteria(e.target.value);
     setSolution(false);
   };
+
   return (
     <div>
       <Navbar />
