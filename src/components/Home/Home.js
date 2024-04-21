@@ -25,7 +25,8 @@ function Home() {
   };
 
   const handleSubmit = () => {
-    if (!inputText || inputText.length == 0 || inputText.trim().length == 0) {
+
+    if (!inputText || inputText.length === 0 || inputText.trim().length === 0) {
       notification("error", "Please enter the predicate");
       return;
     }
@@ -55,7 +56,6 @@ function Home() {
       return;
     }
 
-    console.log("inputText", inputText);
     setSolution(criteria);
   };
 
@@ -63,7 +63,6 @@ function Home() {
     setCriteria(e.target.value);
     setSolution(false);
   };
-
   return (
     <div>
       <Navbar />
@@ -84,8 +83,8 @@ function Home() {
               Use '|' for logical OR and '&' for logical AND
             </p>
           </div>
-          <div className="selectCriteriaDiv">
-            <Radio.Group onChange={onChange} value={criteria}>
+          <div data-testid="select-criteria-div" className="selectCriteriaDiv">
+            <Radio.Group data-testid="radio-group-id" onChange={onChange} value={criteria}>
               <Space direction="vertical">
                 <Radio value={"predicate"}>Predicate Coverage</Radio>
                 <Radio value={"combinational"}>Combinatorial Coverage</Radio>

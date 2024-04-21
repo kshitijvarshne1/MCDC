@@ -75,12 +75,14 @@ function Solution(props) {
     ];
     result = result.map((e, index) => ({ ...e, "No.": index + 1 }));
     return (
-      <Table
-        rowKey={(record) => record["No."]}
-        dataSource={result}
-        columns={columns}
-        pagination={false}
-      />
+      <div data-testid="acive-div-solution">
+        <Table
+          rowKey={(record) => record["No."]}
+          dataSource={result}
+          columns={columns}
+          pagination={false}
+        />
+      </div>
     );
   };
   const getCombinational = () => {
@@ -101,12 +103,14 @@ function Solution(props) {
     ];
 
     return (
-      <Table
-        rowKey={(record) => record["No."]}
-        dataSource={result}
-        columns={columns}
-        pagination={false}
-      />
+      <div data-testid="acive-div-solution">
+        <Table
+          rowKey={(record) => record["No."]}
+          dataSource={result}
+          columns={columns}
+          pagination={false}
+        />
+      </div>
     );
   };
 
@@ -172,9 +176,8 @@ function Solution(props) {
         }))
         .filter((col) => col.key !== "No."),
     ];
-
     return (
-      <div>
+      <div data-testid="acive-div-solution">
         {resultConsolatedData.map((obj, index) =>
           index === resultConsolatedData.length - 1 ? (
             <span key={index}>
@@ -197,11 +200,11 @@ function Solution(props) {
   };
 
   const getFormattedSolution = () => {
-    if (showSolution == "predicate") {
+    if (showSolution === "predicate") {
       return getPredicate();
-    } else if (showSolution == "combinational") {
+    } else if (showSolution === "combinational") {
       return getCombinational();
-    } else if (showSolution == "active") {
+    } else if (showSolution === "active") {
       return getActive();
     } else {
       return "";

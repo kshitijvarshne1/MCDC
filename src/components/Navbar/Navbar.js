@@ -1,12 +1,19 @@
 import React from "react";
 import "./navbar.css";
 import { Col, Row } from "antd";
-import { Link } from "react-router-dom";
 
 function Navbar() {
+
   const handleHomeClick = () => {
     window.location.reload();
   };
+
+  const handleHomeClick1 = () => {
+    console.log("Sdsds");
+    window.location.href = "/";
+  };
+
+
 
   return (
     <div className="navDiv">
@@ -15,10 +22,8 @@ function Navbar() {
           Logic Coverage
         </Col>
         <Col xs={12} xm={12} md={12} lg={12}>
-          <div className="home" onClick={handleHomeClick}>
-            <Link to="/">
-              <div className="homeDiv">Home</div>
-            </Link>
+          <div data-testid="xxDiv" className="home" onClick={handleHomeClick1}>
+            Home
           </div>
         </Col>
       </Row>
